@@ -9,8 +9,7 @@ export default async function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.hero}>
-          <h1 className={styles.title}>Brands & Pieces</h1>
-          <p className={styles.subtitle}>Timeless - carefully selected</p>
+          <p className={styles.subtitle}>Curated by us</p>
         </div>
 
         <div className={styles.gallery}>
