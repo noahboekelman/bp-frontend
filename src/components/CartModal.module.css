@@ -175,6 +175,9 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: background 0.3s ease;
+  display: block;
+  text-align: center;
+  text-decoration: none;
 }
 
 .checkoutButton:hover {

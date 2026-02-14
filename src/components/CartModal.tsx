@@ -124,9 +124,13 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                   </p>
                 </div>
 
-                <button className={styles.checkoutButton}>
+                <Link
+                  href="/checkout"
+                  className={styles.checkoutButton}
+                  onClick={onClose}
+                >
                   Proceed to Checkout
-                </button>
+                </Link>
               </div>
             </>
           )}
