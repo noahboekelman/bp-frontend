@@ -18,8 +18,8 @@ export default function Header() {
         </Link>
         
         <nav className={styles.nav}>
-          <Link href="/collection" className={styles.navLink}>
-            Collection
+          <Link href="/brands" className={styles.navLink}>
+            Brands
           </Link>
           <Link href="/about" className={styles.navLink}>
             About
