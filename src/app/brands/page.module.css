@@ -1,0 +1,255 @@
+.page {
+  min-height: 100vh;
+  background: #fafaf8;
+  color: #1a1a1a;
+}
+
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px 80px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: 100px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.brandNav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.countryGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.countryLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #aaa;
+  margin: 0;
+}
+
+.brandList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brandButton {
+  text-align: left;
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  position: relative;
+  letter-spacing: 0.01em;
+}
+
+.brandButton:hover {
+  color: #1a1a1a;
+}
+
+.brandButton::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #1a1a1a;
+  transition: width 0.3s ease;
+}
+
+.brandButton:hover::after {
+  width: 100%;
+}
+
+.brandButtonActive {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.brandButtonActive::after {
+  width: 0;
+}
+
+/* Content */
+.content {
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.brandHeader {
+  margin-bottom: 40px;
+}
+
+.brandName {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  font-family: 'Georgia', serif;
+  color: #1a1a1a;
+}
+
+.brandMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #888;
+  letter-spacing: 0.02em;
+}
+
+.metaItem {
+  color: #888;
+}
+
+.metaDivider {
+  color: #ccc;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #f0f0ee;
+  margin-bottom: 48px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.section {
+  max-width: 680px;
+}
+
+.description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 300;
+}
+
+.sectionTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.sectionText {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+  }
+
+  .brandNav {
+    gap: 24px;
+  }
+
+  .countryGroup {
+    gap: 8px;
+  }
+
+  .countryLabel {
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 40px 24px 60px;
+  }
+
+  .brandHeader {
+    margin-bottom: 32px;
+  }
+
+  .brandMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .metaDivider {
+    display: none;
+  }
+
+  .imageWrapper {
+    margin-bottom: 32px;
+  }
+
+  .sections {
+    gap: 32px;
+  }
+
+  .description {
+    font-size: 1.125rem;
+  }
+
+  .brandNav {
+    gap: 20px;
+  }
+}
