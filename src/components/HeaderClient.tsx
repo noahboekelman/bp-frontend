@@ -37,6 +37,9 @@ export default function HeaderClient({ products }: HeaderClientProps) {
             <Link href="/brands" className={styles.navLink}>
               Brands
             </Link>
+            <Link href="/pieces" className={styles.navLink}>
+              Pieces
+            </Link>
             <Link href="/about" className={styles.navLink}>
               About
             </Link>
@@ -84,8 +87,11 @@ export default function HeaderClient({ products }: HeaderClientProps) {
         {/* Mobile Menu */}
         <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
           <nav className={styles.mobileNav}>
-            <Link href="/collection" className={styles.mobileNavLink} onClick={closeMenu}>
-              Collection
+            <Link href="/brands" className={styles.mobileNavLink} onClick={closeMenu}>
+              Brands
+            </Link>
+            <Link href="/pieces" className={styles.mobileNavLink} onClick={closeMenu}>
+              Pieces
             </Link>
             <Link href="/about" className={styles.mobileNavLink} onClick={closeMenu}>
               About

@@ -88,7 +88,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
               <p className={styles.emptySubtext}>
                 Discover our curated selection
               </p>
-              <Link href="/brands" className={styles.browseLink} onClick={onClose}>
+              <Link href="/pieces" className={styles.browseLink} onClick={onClose}>
                 Browse Pieces
               </Link>
             </div>
