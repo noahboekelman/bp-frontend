@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Product } from "@/types/product";
 import SearchModal from "./SearchModal";
+import { useCart } from "@/context/CartContext";
 import styles from "./Header.module.css";
 
 interface HeaderClientProps {
@@ -13,7 +14,7 @@ interface HeaderClientProps {
 export default function HeaderClient({ products }: HeaderClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [cartCount] = useState(0); // Will be updated when cart functionality is added
+  const { itemCount } = useCart();
 
   const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMenu = () => setMobileMenuOpen(false);
@@ -60,7 +61,7 @@ export default function HeaderClient({ products }: HeaderClientProps) {
                 {/* Handles */}
                 <path d="M9 9V6.5a3 3 0 0 1 6 0V9" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              {cartCount > 0 && <span className={styles.cartCount}>{cartCount}</span>}
+              {itemCount > 0 && <span className={styles.cartCount}>{itemCount}</span>}
             </button>
             
             <button 
