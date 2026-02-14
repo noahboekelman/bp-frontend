@@ -13,6 +13,7 @@ export const products: Product[] = [
     images: ["/piece_1.png", "/piece_2.png","/piece_2.png","/piece_2.png","/piece_2.png","/piece_2.png","/piece_2.png","/piece_2.png","/piece_2.png","/piece_2.png"],
     featured: true,
     stock: 1,
+    sellerId: "user-001",
     dimensions: {
       width: 38,
       height: 30,
@@ -37,6 +38,7 @@ export const products: Product[] = [
     images: ["/piece_2.png", "/piece_3.png"],
     featured: true,
     stock: 1,
+    sellerId: "user-002",
     dimensions: {
       width: 52,
       height: 68,
@@ -60,6 +62,7 @@ export const products: Product[] = [
     images: ["/piece_3.png", "/piece_4.png"],
     featured: true,
     stock: 1,
+    sellerId: "user-003",
     dimensions: {
       width: 54,
       height: 110,
@@ -83,6 +86,7 @@ export const products: Product[] = [
     images: ["/piece_4.png", "/piece_5.png"],
     featured: true,
     stock: 1,
+    sellerId: "user-004",
     dimensions: {
       width: 10,
       height: 15,

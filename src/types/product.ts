@@ -22,6 +22,7 @@ export interface Product {
   images: string[];
   featured: boolean;
   stock: number;
+  sellerId: string;
   dimensions?: {
     width?: number;
     height?: number;

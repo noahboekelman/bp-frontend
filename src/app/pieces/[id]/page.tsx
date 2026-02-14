@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProductById } from "@/data/products";
+import { getUserById } from "@/data/users";
 import styles from "./page.module.css";
 import PieceClient from "./PieceClient";
 
@@ -17,10 +18,12 @@ export default async function PiecePage({ params }: PiecePageProps) {
     notFound();
   }
 
+  const seller = await getUserById(product.sellerId);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <PieceClient product={product} />
+        <PieceClient product={product} seller={seller} />
       </main>
     </div>
   );
