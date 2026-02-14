@@ -9,6 +9,12 @@
 .piece[data-index="2"] { --index: 2; }
 .piece[data-index="3"] { --index: 3; }
 
+.link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .imageWrapper {
   position: relative;
   width: 100%;

@@ -1,14 +1,14 @@
 export type ProductCondition = "Mint" | "Excellent" | "Good" | "Fair";
 
 export type ProductCategory = 
+  | "Outerwear"
+  | "Tops"
+  | "Bottoms"
+  | "Dresses"
+  | "Footwear"
   | "Accessories"
-  | "Timepieces"
-  | "Furniture"
-  | "Electronics"
-  | "Jewelry"
-  | "Art"
-  | "Fashion"
-  | "Home Decor";
+  | "Knitwear"
+  | "Tailoring";
 
 export interface Product {
   id: string;
@@ -22,10 +22,6 @@ export interface Product {
   images: string[];
   featured: boolean;
   stock: number;
-  authenticity: {
-    verified: boolean;
-    certificate?: string;
-  };
   dimensions?: {
     width?: number;
     height?: number;
