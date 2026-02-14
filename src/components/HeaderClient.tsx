@@ -13,6 +13,7 @@ interface HeaderClientProps {
 export default function HeaderClient({ products }: HeaderClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [cartCount] = useState(0); // Will be updated when cart functionality is added
 
   const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMenu = () => setMobileMenuOpen(false);
@@ -53,12 +54,13 @@ export default function HeaderClient({ products }: HeaderClientProps) {
               </svg>
             </button>
             <button className={styles.iconButton} aria-label="Cart">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                {/* Bag body with rounded corners */}
+                <path d="M5 9h14v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9z" strokeLinejoin="round"/>
+                {/* Handles */}
+                <path d="M9 9V6.5a3 3 0 0 1 6 0V9" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span className={styles.cartCount}>0</span>
+              {cartCount > 0 && <span className={styles.cartCount}>{cartCount}</span>}
             </button>
             
             <button 
