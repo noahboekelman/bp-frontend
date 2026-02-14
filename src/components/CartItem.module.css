@@ -1,0 +1,158 @@
+.item {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 120px;
+  height: 160px;
+  flex-shrink: 0;
+  background: #f0f0ee;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.imageWrapper:hover {
+  transform: scale(1.02);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #888;
+  margin: 0;
+}
+
+.productTitle {
+  font-size: 1.125rem;
+  font-weight: 300;
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.productTitle:hover {
+  color: #666;
+}
+
+.condition {
+  font-size: 0.8125rem;
+  color: #999;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+
+.quantityButton {
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 8px;
+  transition: opacity 0.2s ease;
+  font-weight: 300;
+}
+
+.quantityButton:hover:not(:disabled) {
+  opacity: 0.6;
+}
+
+.quantityButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.quantityValue {
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  min-width: 20px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  padding: 8px 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.removeButton:hover {
+  color: #1a1a1a;
+}
+
+.price {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .item {
+    gap: 20px;
+    padding-bottom: 40px;
+  }
+
+  .imageWrapper {
+    width: 100px;
+    height: 140px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}

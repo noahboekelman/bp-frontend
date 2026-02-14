@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Product } from "@/types/product";
 import SearchModal from "./SearchModal";
+import CartModal from "./CartModal";
 import { useCart } from "@/context/CartContext";
 import styles from "./Header.module.css";
 
@@ -14,12 +15,15 @@ interface HeaderClientProps {
 export default function HeaderClient({ products }: HeaderClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const { itemCount } = useCart();
 
   const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMenu = () => setMobileMenuOpen(false);
   const openSearch = () => setSearchOpen(true);
   const closeSearch = () => setSearchOpen(false);
+  const openCart = () => setCartOpen(true);
+  const closeCart = () => setCartOpen(false);
 
   return (
     <>
@@ -54,7 +58,7 @@ export default function HeaderClient({ products }: HeaderClientProps) {
                 <circle cx="12" cy="7" r="4" />
               </svg>
             </button>
-            <button className={styles.iconButton} aria-label="Cart">
+            <button className={styles.iconButton} aria-label="Cart" onClick={openCart}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                 {/* Bag body with rounded corners */}
                 <path d="M5 9h14v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9z" strokeLinejoin="round"/>
@@ -100,6 +104,9 @@ export default function HeaderClient({ products }: HeaderClientProps) {
 
       {/* Search Modal */}
       <SearchModal isOpen={searchOpen} onClose={closeSearch} products={products} />
+
+      {/* Cart Modal */}
+      <CartModal isOpen={cartOpen} onClose={closeCart} />
     </>
   );
 }
