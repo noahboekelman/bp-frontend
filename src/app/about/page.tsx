@@ -82,8 +82,8 @@ export default function AboutPage() {
                 <p>Instead of algorithms, we rely on human taste.</p>
               </div>
             </div>
-            <p className={styles.statement}>
-              Our role is simple:<br />
+            <p className={styles.statementMultiline}>
+              Our role is simple:
               to surface exceptional pieces and give them the context they deserve.
             </p>
           </section>
