@@ -92,7 +92,9 @@ export async function apiFetch<T>(
           throw new APIError(retryResponse.status, retryResponse.statusText, errorData);
         }
         
+        // Handle 204 No Content - used for DELETE operations
         if (retryResponse.status === 204) {
+          // Type assertion is safe here as 204 responses are only used with void return types
           return undefined as T;
         }
         
@@ -109,8 +111,9 @@ export async function apiFetch<T>(
     throw new APIError(response.status, response.statusText, errorData);
   }
 
-  // Handle 204 No Content
+  // Handle 204 No Content - used for DELETE operations
   if (response.status === 204) {
+    // Type assertion is safe here as 204 responses are only used with void return types
     return undefined as T;
   }
 

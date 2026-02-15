@@ -4,11 +4,17 @@ import { UserResponse } from "@/types/api";
 
 // Convert backend UserResponse to frontend User type
 function mapUserResponseToUser(userResponse: UserResponse): User {
+  // Generate deterministic avatar based on user ID hash
+  const hash = userResponse.id.split('-').reduce((acc, part) => {
+    return acc + part.charCodeAt(0);
+  }, 0);
+  const avatarId = (hash % 70) + 1;
+  
   return {
     id: userResponse.id,
     name: userResponse.username,
     email: userResponse.email,
-    avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`,
+    avatar: `https://i.pravatar.cc/150?img=${avatarId}`,
     bio: "",
     location: "",
     memberSince: userResponse.created_at.split("T")[0],
