@@ -33,14 +33,14 @@ export default function AboutPage() {
             <p className={styles.lead}>
               Brands & Pieces is a curated marketplace for Scandinavian fashion — built on taste, trust, and timeless design.
             </p>
-            <p>We believe second-hand doesn't have to mean second choice.</p>
+            <p>We believe second-hand doesn&apos;t have to mean second choice.</p>
             <p>
               Every brand and every piece on our platform is manually reviewed and selected by our board of fashion directors. 
               Nothing goes live without approval. No endless scrolling. No questionable quality. Just carefully chosen garments 
               that deserve a second life.
             </p>
-            <p className={styles.statement}>This isn't a mass marketplace.</p>
-            <p className={styles.statement}>It's a curated edit.</p>
+            <p className={styles.statement}>This isn&apos;t a mass marketplace.</p>
+            <p className={styles.statement}>It&apos;s a curated edit.</p>
           </section>
 
           <div className={styles.imageGrid}>
@@ -149,7 +149,7 @@ export default function AboutPage() {
             <p>We help your pieces find the right audience.</p>
             <p>
               By placing your items in a curated environment — alongside respected brands and editorial presentation — 
-              you're not competing on price alone. You're selling within a context of taste, quality, and trust.
+              you&apos;re not competing on price alone. You&apos;re selling within a context of taste, quality, and trust.
             </p>
             <p className={styles.statement}>That matters.</p>
           </section>
