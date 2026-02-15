@@ -1,22 +1,27 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import styles from "./AuthModal.module.css";
 
 export default function AuthModal() {
   const { showAuthModal, authModalContext, closeAuthModal } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
+
+  // Don't show modal if user is already on login or signup pages
+  const isOnAuthPage = pathname === "/login" || pathname === "/signup";
+  const shouldShowModal = showAuthModal && !isOnAuthPage;
 
   // Prevent background scroll when modal is open
   useEffect(() => {
-    if (showAuthModal) {
+    if (shouldShowModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [showAuthModal]);
+  }, [shouldShowModal]);
 
   // Handle escape key
   useEffect(() => {
@@ -26,17 +31,17 @@ export default function AuthModal() {
       }
     };
 
-    if (showAuthModal) {
+    if (shouldShowModal) {
       window.addEventListener("keydown", handleEscape);
       return () => window.removeEventListener("keydown", handleEscape);
     }
-  }, [showAuthModal, closeAuthModal]);
+  }, [shouldShowModal, closeAuthModal]);
 
   const handleContinue = () => {
     router.push("/login");
   };
 
-  if (!showAuthModal) return null;
+  if (!shouldShowModal) return null;
 
   // Get contextual copy based on the action
   const getContextualCopy = () => {
