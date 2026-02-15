@@ -108,12 +108,6 @@ export default function HeaderClient({ products }: HeaderClientProps) {
             <Link href="/pieces" className={styles.mobileNavLink} onClick={closeMenu}>
               Pieces
             </Link>
-            <Link href="/about" className={styles.mobileNavLink} onClick={closeMenu}>
-              About
-            </Link>
-            <Link href="/contact" className={styles.mobileNavLink} onClick={closeMenu}>
-              Contact
-            </Link>
           </nav>
         </div>
 
