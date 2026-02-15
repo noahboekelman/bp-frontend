@@ -255,10 +255,10 @@ export default function AboutClient() {
         <div className={styles.container}>
           {/* Sidebar */}
           <aside className={styles.sidebar}>
-            <nav className={styles.sectionNav}>
+            <nav className={styles.sectionNav} aria-label="About page sections">
               <div className={styles.navGroup}>
                 <h3 className={styles.navLabel}>About</h3>
-                <div className={styles.navList}>
+                <div className={styles.navList} role="tablist">
                   {sections.map((section) => (
                     <button
                       key={section.id}
@@ -266,6 +266,9 @@ export default function AboutClient() {
                       className={`${styles.navButton} ${
                         activeSection === section.id ? styles.navButtonActive : ""
                       }`}
+                      role="tab"
+                      aria-selected={activeSection === section.id}
+                      aria-controls={`section-${section.id}`}
                     >
                       {section.label}
                     </button>
@@ -276,7 +279,7 @@ export default function AboutClient() {
           </aside>
 
           {/* Content */}
-          <div className={styles.content}>
+          <div className={styles.content} role="tabpanel" id={`section-${activeSection}`}>
             {renderContent()}
           </div>
         </div>
