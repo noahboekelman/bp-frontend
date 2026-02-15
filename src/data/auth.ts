@@ -96,8 +96,11 @@ export async function createUser(
     return mapUserResponseToUser(userResponse);
   } catch (error) {
     console.error("Signup failed", error);
-    if (error instanceof APIError && error.data?.detail) {
-      console.error("Validation errors:", error.data.detail);
+    if (error instanceof APIError) {
+      const errorData = error.data as { detail?: unknown };
+      if (errorData?.detail) {
+        console.error("Validation errors:", errorData.detail);
+      }
     }
     return null;
   }

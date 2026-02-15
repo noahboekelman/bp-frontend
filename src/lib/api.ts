@@ -36,7 +36,7 @@ export class APIError extends Error {
   constructor(
     public status: number,
     public statusText: string,
-    public data?: any
+    public data?: unknown
   ) {
     super(`API Error: ${status} ${statusText}`);
     this.name = "APIError";
@@ -155,14 +155,14 @@ export const api = {
   get: <T>(endpoint: string, requiresAuth = false) =>
     apiFetch<T>(endpoint, { method: "GET", requiresAuth }),
 
-  post: <T>(endpoint: string, data?: any, requiresAuth = false) =>
+  post: <T>(endpoint: string, data?: unknown, requiresAuth = false) =>
     apiFetch<T>(endpoint, {
       method: "POST",
       body: data ? JSON.stringify(data) : undefined,
       requiresAuth,
     }),
 
-  put: <T>(endpoint: string, data?: any, requiresAuth = false) =>
+  put: <T>(endpoint: string, data?: unknown, requiresAuth = false) =>
     apiFetch<T>(endpoint, {
       method: "PUT",
       body: data ? JSON.stringify(data) : undefined,

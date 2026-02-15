@@ -49,6 +49,6 @@ export interface ValidationError {
   loc: (string | number)[];
   msg: string;
   type: string;
-  input?: any;
-  ctx?: Record<string, any>;
+  input?: unknown;
+  ctx?: Record<string, unknown>;
 }
