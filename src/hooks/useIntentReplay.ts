@@ -9,6 +9,7 @@ export function useIntentReplay() {
 
   const executeIntent = (intent: IntentAction | null) => {
     if (!intent) {
+      // No pending intent - redirect to home page after successful authentication
       router.push("/");
       return;
     }
