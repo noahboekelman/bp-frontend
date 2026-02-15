@@ -9,7 +9,7 @@ import {
   useCallback,
 } from "react";
 import { User } from "@/types/user";
-import { authenticateUser, createUser } from "@/data/auth";
+import { authenticateUser, createUser, logoutUser } from "@/data/auth";
 
 // Type for actions that can be stored and replayed after authentication
 export type IntentAction =
@@ -103,6 +103,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const logout = useCallback(() => {
+    logoutUser(); // Call backend logout
     setUser(null);
     setStoredIntentState(null);
   }, []);

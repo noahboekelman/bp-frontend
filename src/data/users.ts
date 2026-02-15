@@ -1,5 +1,28 @@
 import { User } from "@/types/user";
+import { api } from "@/lib/api";
+import { UserResponse } from "@/types/api";
 
+// Convert backend UserResponse to frontend User type
+function mapUserResponseToUser(userResponse: UserResponse): User {
+  return {
+    id: userResponse.id,
+    name: userResponse.username,
+    email: userResponse.email,
+    avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`,
+    bio: "",
+    location: "",
+    memberSince: userResponse.created_at.split("T")[0],
+    verifiedSeller: false,
+    isAdmin: userResponse.role === "admin",
+    rating: {
+      average: 0,
+      count: 0,
+    },
+    totalSales: 0,
+  };
+}
+
+// Mock users data for fallback/development
 export const users: User[] = [
   {
     id: "user-001",
@@ -61,10 +84,24 @@ export const users: User[] = [
 
 // Helper function to get user by ID
 export async function getUserById(id: string): Promise<User | undefined> {
-  return users.find((user) => user.id === id);
+  try {
+    const userResponse = await api.get<UserResponse>(`/users/${id}`, true);
+    return mapUserResponseToUser(userResponse);
+  } catch (error) {
+    console.error(`Failed to fetch user ${id}:`, error);
+    // Fallback to mock data
+    return users.find((user) => user.id === id);
+  }
 }
 
 // Helper function to get all users
 export async function getAllUsers(): Promise<User[]> {
-  return users;
+  try {
+    const userResponses = await api.get<UserResponse[]>("/users/", true);
+    return userResponses.map(mapUserResponseToUser);
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    // Fallback to mock data
+    return users;
+  }
 }
