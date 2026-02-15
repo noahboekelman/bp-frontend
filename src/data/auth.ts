@@ -1,8 +1,7 @@
 import { User } from "@/types/user";
-import { api, setTokens, clearTokens, APIError } from "@/lib/api";
+import { api, APIError } from "@/lib/api";
 import {
   LoginRequest,
-  TokenResponse,
   UserResponse,
   UserCreate,
 } from "@/types/api";
@@ -45,22 +44,14 @@ export async function authenticateUser(
       password,
     };
 
-    const response = await api.post<TokenResponse>(
-      "/auth/login",
-      loginData,
-      false
-    );
+    await api.post("/auth/login", loginData);
 
-    // Store tokens
-    setTokens(response.access_token, response.refresh_token);
-
-    // Fetch user details
-    const userResponse = await api.get<UserResponse>("/auth/me", true);
+    // Fetch user details (cookies are now set by server)
+    const userResponse = await api.get<UserResponse>("/auth/me");
 
     return mapUserResponseToUser(userResponse);
   } catch (error) {
     console.error("Login failed", error);
-    clearTokens();
     return null;
   }
 }
@@ -82,22 +73,14 @@ export async function createUser(
     // Call backend create user endpoint
     const userResponse = await api.post<UserResponse>(
       "/users/",
-      userData,
-      false
+      userData
     );
 
     // After creating user, log them in
-    const loginResponse = await api.post<TokenResponse>(
-      "/auth/login",
-      {
-        username: email,
-        password,
-      },
-      false
-    );
-
-    // Store tokens
-    setTokens(loginResponse.access_token, loginResponse.refresh_token);
+    await api.post("/auth/login", {
+      username: email,
+      password,
+    });
 
     return mapUserResponseToUser(userResponse);
   } catch (error) {
@@ -115,11 +98,10 @@ export async function createUser(
 // Helper function to get current authenticated user
 export async function getCurrentUser(): Promise<User | null> {
   try {
-    const userResponse = await api.get<UserResponse>("/auth/me", true);
+    const userResponse = await api.get<UserResponse>("/auth/me");
     return mapUserResponseToUser(userResponse);
   } catch (error) {
     console.error("Failed to get current user", error);
-    clearTokens();
     return null;
   }
 }
@@ -127,13 +109,10 @@ export async function getCurrentUser(): Promise<User | null> {
 // Helper function to logout
 export async function logoutUser(): Promise<void> {
   try {
-    // Call logout endpoints
-    await api.delete("/auth/logout", true);
-    await api.delete("/auth/logout-refresh", true);
+    // Call logout endpoints (cookies will be cleared by server)
+    await api.delete("/auth/logout");
+    await api.delete("/auth/logout-refresh");
   } catch (error) {
     console.error("Logout API calls failed", error);
-  } finally {
-    // Always clear tokens locally
-    clearTokens();
   }
 }
