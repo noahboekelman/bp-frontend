@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Backend API Integration
+
+This frontend is connected to a FastAPI backend. To configure the backend URL:
+
+1. Create a `.env.local` file in the root directory
+2. Add the following environment variable:
+   ```
+   NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+   ```
+3. Update the URL to match your backend server address
+
+The frontend integrates with the following backend endpoints:
+- Authentication: `/auth/login`, `/auth/refresh`, `/auth/logout`, `/auth/me`
+- User Management: `/users/`, `/users/{id}`
+
+JWT tokens are automatically managed and stored in localStorage. The API client handles token refresh automatically when access tokens expire.
+
 ## Getting Started
 
 First, run the development server:
