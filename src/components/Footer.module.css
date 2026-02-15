@@ -1,0 +1,124 @@
+.footer {
+  width: 100%;
+  background: #fafaf8;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: auto;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px 32px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 48px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.logo {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.logo:hover {
+  opacity: 0.6;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+  max-width: 400px;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.linkGroupTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.link {
+  font-size: 0.95rem;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  width: fit-content;
+}
+
+.link:hover {
+  color: #1a1a1a;
+}
+
+.bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.copyright {
+  font-size: 0.875rem;
+  color: #999;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 48px 24px 24px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 32px;
+  }
+
+  .links {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+  }
+
+  .bottom {
+    padding-top: 24px;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+}
