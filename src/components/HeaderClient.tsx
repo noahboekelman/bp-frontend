@@ -6,6 +6,7 @@ import { Product } from "@/types/product";
 import SearchModal from "./SearchModal";
 import CartModal from "./CartModal";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import styles from "./Header.module.css";
 
 interface HeaderClientProps {
@@ -17,6 +18,7 @@ export default function HeaderClient({ products }: HeaderClientProps) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const { itemCount } = useCart();
+  const { isAuthenticated, openAuthModal, setStoredIntent } = useAuth();
 
   const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMenu = () => setMobileMenuOpen(false);
@@ -24,6 +26,19 @@ export default function HeaderClient({ products }: HeaderClientProps) {
   const closeSearch = () => setSearchOpen(false);
   const openCart = () => setCartOpen(true);
   const closeCart = () => setCartOpen(false);
+
+  const handleAccountClick = () => {
+    if (!isAuthenticated) {
+      // Store intent to visit profile
+      setStoredIntent({ type: "visit_profile" });
+      // Open auth modal with profile context
+      openAuthModal("profile");
+    } else {
+      // User is authenticated, navigate to profile
+      // TODO: Navigate to profile page when it's implemented
+      console.log("Navigate to profile");
+    }
+  };
 
   return (
     <>
@@ -55,7 +70,7 @@ export default function HeaderClient({ products }: HeaderClientProps) {
                 <path d="m21 21-4.35-4.35" />
               </svg>
             </button>
-            <button className={styles.iconButton} aria-label="Account">
+            <button className={styles.iconButton} aria-label="Account" onClick={handleAccountClick}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />

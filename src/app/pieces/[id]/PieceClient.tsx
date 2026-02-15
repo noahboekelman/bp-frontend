@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Product } from "@/types/product";
 import { User } from "@/types/user";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import ImageGallery from "./ImageGallery";
 import styles from "./page.module.css";
 
@@ -15,9 +16,20 @@ interface PieceClientProps {
 
 export default function PieceClient({ product, seller }: PieceClientProps) {
   const { addToCart } = useCart();
+  const { isAuthenticated, openAuthModal, setStoredIntent } = useAuth();
   const [justAdded, setJustAdded] = useState(false);
 
   const handleAddToCart = () => {
+    // Check if user is authenticated
+    if (!isAuthenticated) {
+      // Store the intent to add to cart
+      setStoredIntent({ type: "add_to_cart", productId: product.id });
+      // Open auth modal with context
+      openAuthModal("cart");
+      return;
+    }
+
+    // User is authenticated, proceed with adding to cart
     addToCart(product);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 2000);
